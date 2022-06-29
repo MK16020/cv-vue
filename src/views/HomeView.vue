@@ -1,8 +1,9 @@
 <template>
   <div class="Home ma-16">
-    <v-row>
-      <v-col>
-        <v-card elevation="0" class="primary Intro">
+    <v-container fluid>
+    <v-row dense>
+      <v-col col="12">
+        <v-card elevation="0" class="Intro">
           <span>I'm</span>
           <h3>Maryam Alkhamis</h3>
           <p>
@@ -12,42 +13,51 @@
           <v-icon>mdi-account-circle</v-icon>
         </v-card>
       </v-col>
-      <v-col></v-col>
+      <v-col style="background-color: red" >
+
+      </v-col>
     </v-row>
     <v-row>
       <v-col>
-        <v-list>
-          <v-list-item-group>
-            <v-list-item>
-              <v-list-item-title> Item 1 </v-list-item-title>
-            </v-list-item>
+        <v-row>
+          <v-col v-for="information in info" :key="information.title" :cols="information.flex">
+            <v-card>
+              <v-card-title> {{information.title}} </v-card-title>
+            </v-card>
+          </v-col>
 
-            <v-list-item>
-              <v-list-item-title> Item 2 </v-list-item-title>
-            </v-list-item>
-
-            <v-list-item>
-              <v-list-item-title> Item 3 </v-list-item-title>
-            </v-list-item>
-          </v-list-item-group>
-        </v-list>
+        </v-row>
       </v-col>
     </v-row>
+    </v-container>
   </div>
 </template>
 
 <style scoped>
-.Intro span{
-color: #E91E63;
-font-size: 30px;
-}
-.Intro h3{
+.Intro span {
+  color: #e91e63;
   font-size: 50px;
+}
+.Intro h3 {
+  font-size: 350%;
+}
+@media only screen and (max-width: 600px) {
+  .Intro h3 {
+  font-size: 200%;
+}
 }
 </style>
 
 <script>
 export default {
   name: "Home-page",
+   data:() => ({
+    Info: [
+        { title: 'About me', flex: 3 },
+        { title: 'Resume', flex: 3 },
+        { title: 'Projects', flex: 3},
+        { title: 'Contact me', flex: 3},
+      ],
+   }),
 };
 </script>
